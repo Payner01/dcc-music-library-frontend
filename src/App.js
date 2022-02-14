@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import ListOfSongs from './Components/ListOfSongs/ListOfSongs';
+import TitleBar from './Components/TitleBar/TitleBar';
 
 
 
@@ -19,8 +20,11 @@ function App() {
   }
 
   return (
-    <div>
-      <ListOfSongs songs={songs} />
+    <div className='page-header'>
+      <TitleBar />
+      <div className='page-content'>
+        <ListOfSongs songs={songs} />
+      </div>
     </div>
   );
 }
