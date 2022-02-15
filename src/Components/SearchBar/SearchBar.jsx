@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import  Button  from 'react-bootstrap/Button';
+import './SearchBar.css'
 
 
 const SearchBar = (props) => {
@@ -17,7 +19,7 @@ const SearchBar = (props) => {
     return ( 
         <form onSubmit={handleSubmit}>
             <input type="text" value={search} placeholder="Search by Title, Artist, Album, Genre, or Release Date" onChange={(event) => setSearch(event.target.value)} />
-            <button type="submit" className='button'>Search</button>
+            <Button className='custom-btn' variant="primary" type="submit" >Search</Button>
         </form>
 
 
