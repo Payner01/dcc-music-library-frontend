@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const SearchBar = (props) => {
 
     const [search, setSearch] = useState('');
@@ -15,7 +16,7 @@ const SearchBar = (props) => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <input type="text" value={search} onChange={(event) => setSearch(event.target.value)} />
+            <input type="text" value={search} placeholder="Search by Title, Artist, Album, Genre, or Release Date" onChange={(event) => setSearch(event.target.value)} />
             <button type="submit" className='button'>Search</button>
         </form>
 

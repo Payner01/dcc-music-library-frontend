@@ -1,22 +1,23 @@
 import React from 'react';
+import  Table  from 'react-bootstrap/Table';
 
 
 const ListOfSongs = (props) => {
     
     
     return ( 
-        <table className="table">
+        <Table striped bordered hover variant='dark' size='sm'>
             <thead>
-            <tr>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Genre</th>
-                <th>Release Date</th>
-            </tr>
+                <tr>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Genre</th>
+                    <th>Release Date</th>
+                </tr>
             </thead>
             <tbody>
-            {props.filterResults.map((song, index) => {
+                {props.filterResults.map((song, index) => {
                 return (
                 <tr key={index}>
                     <td>{song.title}</td>
@@ -28,7 +29,7 @@ const ListOfSongs = (props) => {
                 );
             })}
             </tbody>
-      </table>  
+      </Table>  
       );
 }
  

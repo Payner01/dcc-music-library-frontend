@@ -1,8 +1,10 @@
+import './TitleBar.css'
+
 const TitleBar = (props) => {
     return (
-        <div className="container">
-            <div className="page-header">
-                <h1>Music Library</h1>
+        <div className="nav-container">
+            <div className='nav-bar1'>
+                 <h3 style={{padding: '1em'}}>Music <small className='text-muted'>Library</small></h3>
             </div>
         </div>
       );

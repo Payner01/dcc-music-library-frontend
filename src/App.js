@@ -3,9 +3,7 @@ import axios from 'axios';
 import ListOfSongs from './Components/ListOfSongs/ListOfSongs';
 import TitleBar from './Components/TitleBar/TitleBar';
 import SearchBar from './Components/SearchBar/SearchBar';
-
-
-
+import './App.css'
 
 function App() {
 
@@ -40,6 +38,7 @@ function App() {
   }
 
   return (
+    
     <div className='page-header'>
       <TitleBar />
       <div className='page-content-top'>

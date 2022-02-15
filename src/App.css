@@ -1,0 +1,13 @@
+.nav-container{
+    background-color: #253237;
+}
+.page-content-top{
+    display: flex;
+    padding: 3em;
+    justify-content: center;
+}
+.page-content-bottom{
+    display: flex;
+    padding-left: 5em;
+    padding-right: 5em;
+}
