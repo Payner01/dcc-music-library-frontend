@@ -16,7 +16,7 @@ const ListOfSongs = (props) => {
             </tr>
             </thead>
             <tbody>
-            {props.songs.map((song, index) => {
+            {props.filterResults.map((song, index) => {
                 return (
                 <tr key={index}>
                     <td>{song.title}</td>
