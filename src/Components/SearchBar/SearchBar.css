@@ -32,3 +32,9 @@
     line-height: 2rem;
   }
 }
+.form-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  font-size: 3rem;
+}
