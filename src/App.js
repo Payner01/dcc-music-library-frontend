@@ -5,6 +5,7 @@ import TitleBar from './Components/TitleBar/TitleBar';
 import SearchBar from './Components/SearchBar/SearchBar';
 import './App.css'
 import SongForm from './Components/SongForm/SongForm';
+import UpdateSong from './Components/UpdateSong/UpdateSong';
 
 function App() {
 
@@ -45,6 +46,8 @@ function App() {
     }
   }
 
+  // async function updateSong()
+
   return (
     
     <div className='page-header'>
@@ -52,6 +55,7 @@ function App() {
       <div className='page-content-top'>
         <SearchBar filteredMusic={filteredMusic} getAllSongs = {getAllSongs}/>
         <SongForm addNewSongProperty={addNewSong} />
+        <UpdateSong updateSongProperty={updateSong}/>
       </div>
       <div className='page-content-bottom'>
         <ListOfSongs songs={songs} filterResults = {filteredMusicList}/>

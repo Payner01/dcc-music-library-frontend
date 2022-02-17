@@ -14,6 +14,7 @@ const ListOfSongs = (props) => {
                     <th>Album</th>
                     <th>Genre</th>
                     <th>Release Date</th>
+                    <th>Likes</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@ const ListOfSongs = (props) => {
                     <td>{song.album}</td>
                     <td>{song.genre}</td>
                     <td>{song.release_date}</td>
+                    <td>{song.likes}</td>
                 </tr>
                 );
             })}

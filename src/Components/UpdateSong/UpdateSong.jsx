@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SongForm = (props) => {
+const UpdateSong = (props) => {
     
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
@@ -21,7 +21,7 @@ const SongForm = (props) => {
             likes: likes
         };
         console.log(newEntry);
-        props.addNewSongProperty(newEntry);
+        props.updateSongProperty(newEntry);
         setTitle('');
         setArtist('');
         setAlbum('');
@@ -29,10 +29,10 @@ const SongForm = (props) => {
         setrelease_Date('');
         setLike(0);
     }
-
+    
     return ( 
         <div>
-        <h3>Add Song</h3>
+        <h3>Update Song</h3>
             <form onSubmit={handleSubmit} className='form-grid'>
                 <div className='form-control'>
                     <label>Title</label>
@@ -49,8 +49,7 @@ const SongForm = (props) => {
                 </div>
             </form>
         </div>
-
      );
-    }
+}
  
-export default SongForm;
+export default UpdateSong;
