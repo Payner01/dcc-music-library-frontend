@@ -5,6 +5,7 @@ import  Table  from 'react-bootstrap/Table';
 const ListOfSongs = (props) => {
     
     
+    
     return ( 
         <Table striped bordered hover variant='dark' size='sm'>
             <thead>
@@ -15,6 +16,7 @@ const ListOfSongs = (props) => {
                     <th>Genre</th>
                     <th>Release Date</th>
                     <th>Likes</th>
+                    <th>Update Song Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +29,7 @@ const ListOfSongs = (props) => {
                     <td>{song.genre}</td>
                     <td>{song.release_date}</td>
                     <td>{song.likes}</td>
+                    <td><form onSubmit={props.updateSong}><button type='submit'  className='btn btn-secondary'>Update {song.title} by {song.artist}</button></form></td>
                 </tr>
                 );
             })}

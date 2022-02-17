@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SongForm from '../SongForm/SongForm';
 
 const UpdateSong = (props) => {
     
@@ -22,12 +23,12 @@ const UpdateSong = (props) => {
         };
         console.log(newEntry);
         props.updateSongProperty(newEntry);
-        setTitle('');
-        setArtist('');
-        setAlbum('');
-        setGenre('');
-        setrelease_Date('');
-        setLike(0);
+        // setTitle('');
+        // setArtist('');
+        // setAlbum('');
+        // setGenre('');
+        // setrelease_Date('');
+        // setLike(0);
     }
     
     return ( 
@@ -36,7 +37,7 @@ const UpdateSong = (props) => {
             <form onSubmit={handleSubmit} className='form-grid'>
                 <div className='form-control'>
                     <label>Title</label>
-                    <input type='text' className='form-control' value={title} onChange={(event) => setTitle(event.target.value)} />
+                    <input type='text' className='form-control' defaultValue={props.updateSong} value={title} onChange={(event) => setTitle(event.target.value)} />
                     <label>Artist</label>
                     <input type='text' className='form-control' value={artist} onChange={(event) => setArtist(event.target.value)}/>
                     <label>Album</label>
@@ -45,7 +46,7 @@ const UpdateSong = (props) => {
                     <input type='text' className='form-control' value={genre} onChange={(event) => setGenre(event.target.value)}/>
                     <label>Release Date</label>
                     <input type='date' className='form-control' value={release_date} onChange={(event) => setrelease_Date(event.target.value)}/>
-                    <button type='submit' className='btn btn-secondary'>Create Song</button>
+                    <button type='submit' className='btn btn-secondary'>Update</button>
                 </div>
             </form>
         </div>

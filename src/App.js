@@ -46,7 +46,12 @@ function App() {
     }
   }
 
-  // async function updateSong()
+  async function updateSong(updateSong){
+    let response = await axios.post('http://127.0.0.1:8000/music/', updateSong);
+    if(response.status === 201){
+      await getAllSongs();
+    }
+  }
 
   return (
     
@@ -58,7 +63,7 @@ function App() {
         <UpdateSong updateSongProperty={updateSong}/>
       </div>
       <div className='page-content-bottom'>
-        <ListOfSongs songs={songs} filterResults = {filteredMusicList}/>
+        <ListOfSongs songs={songs} filterResults = {filteredMusicList} updateSong={updateSong}/>
       </div>
     </div>
   );
