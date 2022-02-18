@@ -11,6 +11,8 @@ function App() {
 
   const [songs, setSongs] = useState([]);
   const [filteredMusicList, setFilteredMusicList] = useState([]);
+  const [formData, setFormData] = useState({});
+  console.log(formData);
 
   useEffect(() => {
     getAllSongs();
@@ -53,6 +55,7 @@ function App() {
     }
   }
 
+
   return (
     
     <div className='page-header'>
@@ -60,10 +63,10 @@ function App() {
       <div className='page-content-top'>
         <SearchBar filteredMusic={filteredMusic} getAllSongs = {getAllSongs}/>
         <SongForm addNewSongProperty={addNewSong} />
-        <UpdateSong updateSongProperty={updateSong}/>
+        <UpdateSong updateSongProperty={updateSong} song = {formData}/>
       </div>
       <div className='page-content-bottom'>
-        <ListOfSongs songs={songs} filterResults = {filteredMusicList} updateSong={updateSong}/>
+        <ListOfSongs songs={songs} filterResults = {filteredMusicList} updateSong={updateSong} setFormData={setFormData}/>
       </div>
     </div>
   );

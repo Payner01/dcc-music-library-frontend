@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import SongForm from '../SongForm/SongForm';
+import React, { useEffect, useState } from 'react';
+
 
 const UpdateSong = (props) => {
     
@@ -8,8 +8,16 @@ const UpdateSong = (props) => {
     const [album, setAlbum] = useState('');
     const [genre, setGenre] = useState('');
     const [release_date, setrelease_Date] = useState('');
-    const [likes, setLike] = useState('')
 
+
+    useEffect(() => {
+        setTitle(props.song.title);
+        setArtist(props.song.artist);
+        setAlbum(props.song.album);
+        setGenre(props.song.genre);
+        setrelease_Date(props.song.release_date);
+        
+    },[props.song]);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -19,7 +27,7 @@ const UpdateSong = (props) => {
             album: album,
             genre: genre,
             release_date: release_date,
-            likes: likes
+           
         };
         console.log(newEntry);
         props.updateSongProperty(newEntry);
@@ -31,13 +39,15 @@ const UpdateSong = (props) => {
         // setLike(0);
     }
     
+
+
     return ( 
         <div>
         <h3>Update Song</h3>
             <form onSubmit={handleSubmit} className='form-grid'>
                 <div className='form-control'>
                     <label>Title</label>
-                    <input type='text' className='form-control' defaultValue={props.updateSong} value={title} onChange={(event) => setTitle(event.target.value)} />
+                    <input type='text' className='form-control' value={title} onChange={(event) => setTitle(event.target.value)} />
                     <label>Artist</label>
                     <input type='text' className='form-control' value={artist} onChange={(event) => setArtist(event.target.value)}/>
                     <label>Album</label>
