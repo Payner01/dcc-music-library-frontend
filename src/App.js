@@ -7,12 +7,15 @@ import './App.css'
 import SongForm from './Components/SongForm/SongForm';
 import UpdateSong from './Components/UpdateSong/UpdateSong';
 
+
+
 function App() {
 
   const [songs, setSongs] = useState([]);
   const [filteredMusicList, setFilteredMusicList] = useState([]);
   const [formData, setFormData] = useState({});
   console.log(formData);
+  
 
   useEffect(() => {
     getAllSongs();
@@ -49,13 +52,14 @@ function App() {
     }
   }
 
-  // async function updateSong(id, formData){
-  //   let response = await axios.put(`http://127.0.0.1:8000/music/${id}/`, formData);
-  //   console.log(response);
-  //   if(response.data === 201){
-  //     await getAllSongs();
-  //   }
-  // }
+
+  async function updateSong(id, updatedEntry){
+    let response = await axios.put(`http://127.0.0.1:8000/music/${id}/`, updatedEntry);
+    console.log(response);
+    if(response.data === 201){
+      await getAllSongs();
+    }
+  }
 
   async function deleteSong(id){
     let response = await axios.delete(`http://127.0.0.1:8000/music/${id}/`);
@@ -65,14 +69,21 @@ function App() {
     }
   }
 
+
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShowUpdate = () => setShow(true);
+
   return (
     
     <div className='page-header'>
       <TitleBar />
       <div className='page-content-top'>
         <SearchBar filteredMusic={filteredMusic} getAllSongs = {getAllSongs}/>
+      </div>
+      <div className='page-content-middle'>
         <SongForm addNewSongProperty={addNewSong} />
-        <UpdateSong song={formData} />
+        <UpdateSong song={formData} updateSong={updateSong} />
       </div>
       <div className='page-content-bottom'>
         <ListOfSongs songs={songs} filterResults = {filteredMusicList} deleteSong = {deleteSong} setFormData={setFormData}/>
