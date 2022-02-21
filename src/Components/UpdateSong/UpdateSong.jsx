@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const UpdateSong = (props) => {
@@ -8,7 +9,7 @@ const UpdateSong = (props) => {
     const [album, setAlbum] = useState('');
     const [genre, setGenre] = useState('');
     const [release_date, setrelease_Date] = useState('');
-
+    const [likes, setLikes] = useState(0);
 
     useEffect(() => {
         setTitle(props.song.title);
@@ -21,16 +22,18 @@ const UpdateSong = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        let newEntry = {
+        let updatedEntry = {
             title: title,
             artist: artist,
             album: album,
             genre: genre,
             release_date: release_date,
+            likes: likes,
            
         };
-        console.log(newEntry);
-        props.updateSongProperty(newEntry);
+         
+        console.log(updatedEntry);
+        updateSong(props.song.id, updatedEntry);
         // setTitle('');
         // setArtist('');
         // setAlbum('');
@@ -38,7 +41,17 @@ const UpdateSong = (props) => {
         // setrelease_Date('');
         // setLike(0);
     }
+
+   
     
+    async function updateSong(id, updatedEntry){
+        let response = await axios.put(`http://127.0.0.1:8000/music/${id}/`, updatedEntry);
+        console.log(response);
+        if(response.data === 201){
+          await props.getAllSongs();
+        }
+      }
+
 
 
     return ( 
@@ -56,7 +69,7 @@ const UpdateSong = (props) => {
                     <input type='text' className='form-control' value={genre} onChange={(event) => setGenre(event.target.value)}/>
                     <label>Release Date</label>
                     <input type='date' className='form-control' value={release_date} onChange={(event) => setrelease_Date(event.target.value)}/>
-                    <button type='submit' className='btn btn-secondary'>Update</button>
+                    <button type='submit' onClick={() => window.location.reload(false)} className='btn btn-secondary'>Update</button>
                 </div>
             </form>
         </div>

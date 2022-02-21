@@ -43,18 +43,27 @@ function App() {
 
   async function addNewSong(newSong){
     let response = await axios.post('http://127.0.0.1:8000/music/', newSong);
+    console.log(response);
     if(response.status === 201){
       await getAllSongs();
     }
   }
 
-  async function updateSong(updateSong){
-    let response = await axios.post('http://127.0.0.1:8000/music/', updateSong);
-    if(response.status === 201){
+  // async function updateSong(id, formData){
+  //   let response = await axios.put(`http://127.0.0.1:8000/music/${id}/`, formData);
+  //   console.log(response);
+  //   if(response.data === 201){
+  //     await getAllSongs();
+  //   }
+  // }
+
+  async function deleteSong(id){
+    let response = await axios.delete(`http://127.0.0.1:8000/music/${id}/`);
+    console.log(response);
+    if(response.status === 204){
       await getAllSongs();
     }
   }
-
 
   return (
     
@@ -63,10 +72,10 @@ function App() {
       <div className='page-content-top'>
         <SearchBar filteredMusic={filteredMusic} getAllSongs = {getAllSongs}/>
         <SongForm addNewSongProperty={addNewSong} />
-        <UpdateSong updateSongProperty={updateSong} song = {formData}/>
+        <UpdateSong song={formData} />
       </div>
       <div className='page-content-bottom'>
-        <ListOfSongs songs={songs} filterResults = {filteredMusicList} updateSong={updateSong} setFormData={setFormData}/>
+        <ListOfSongs songs={songs} filterResults = {filteredMusicList} deleteSong = {deleteSong} setFormData={setFormData}/>
       </div>
     </div>
   );

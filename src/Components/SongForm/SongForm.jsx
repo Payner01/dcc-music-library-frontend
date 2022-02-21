@@ -7,7 +7,7 @@ const SongForm = (props) => {
     const [album, setAlbum] = useState('');
     const [genre, setGenre] = useState('');
     const [release_date, setrelease_Date] = useState('');
-    const [likes, setLike] = useState('')
+    const [likes, setLike] = useState(0)
 
 
     function handleSubmit(event) {
